@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Efficiency Predictor</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Energy Efficiency Predictor</h1>
+        <form id="predictionForm">
+            <div class="input-group">
+                <label for="X1">X1:</label>
+                <input type="number" id="X1" required>
+            </div>
+            <div class="input-group">
+                <label for="X2">X2:</label>
+                <input type="number" id="X2" required>
+            </div>
+            <div class="input-group">
+                <label for="X3">X3:</label>
+                <input type="number" id="X3" required>
+            </div>
+            <div class="input-group">
+                <label for="X4">X4:</label>
+                <input type="number" id="X4" required>
+            </div>
+            <div class="input-group">
+                <label for="X5">X5:</label>
+                <input type="number" id="X5" required>
+            </div>
+            <div class="input-group">
+                <label for="X6">X6:</label>
+                <input type="number" id="X6" required>
+            </div>
+            <div class="input-group">
+                <label for="X7">X7:</label>
+                <input type="number" id="X7" required>
+            </div>
+            <div class="input-group">
+                <label for="X8">X8:</label>
+                <input type="number" id="X8" required>
+            </div>
+            <button type="button" onclick="predictEnergy()">Predict</button>
+        </form>
+        <div id="results">
+            <h3>Results:</h3>
+            <p id="heatingResult"></p>
+            <p id="coolingResult"></p>
+        </div>
+    </div>
+</body>
+</html>
