@@ -1,22 +1,25 @@
+from flask import Flask, send_from_directory, request, jsonify
 import os
-from flask import Flask, request, jsonify
 import joblib
 import numpy as np
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend', template_folder='../frontend')
 
-# Construct absolute paths for models
+# Load Models
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_Y1_PATH = os.path.join(BASE_DIR, 'models', 'y1_rfr_model.joblib')
 MODEL_Y2_PATH = os.path.join(BASE_DIR, 'models', 'y2_rfr_model.joblib')
 
-# Load trained models (.joblib format)
 model_y1 = joblib.load(MODEL_Y1_PATH)
 model_y2 = joblib.load(MODEL_Y2_PATH)
 
 @app.route('/')
-def home():
-    return "Welcome to the Energy Efficiency Prediction API!"
+def serve_index():
+    return send_from_directory('../frontend', 'index.html')
+
+@app.route('/<path:path>')
+def serve_static(path):
+    return send_from_directory('../frontend', path)
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -26,16 +29,7 @@ def predict():
         if not all(feature in data for feature in required_features):
             return jsonify({"error": "Missing one or more required features."}), 400
         
-        features = np.array([[
-            float(data['X1']),
-            float(data['X2']),
-            float(data['X3']),
-            float(data['X4']),
-            float(data['X5']),
-            float(data['X6']),
-            float(data['X7']),
-            float(data['X8'])
-        ]])
+        features = np.array([[float(data[feature]) for feature in required_features]])
         
         heating_load = model_y1.predict(features)[0]
         cooling_load = model_y2.predict(features)[0]
