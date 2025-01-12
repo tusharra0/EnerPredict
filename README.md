@@ -22,6 +22,8 @@ The prediction models used in this project are based on **Random Forest Regresso
 - **Heating Load (Y1):** Predicts the energy required for heating a building.
 - **Cooling Load (Y2):** Predicts the energy required for cooling a building.
 
+Additionally, **a Decision Tree Regressor and Random Forest Regressor were implemented from scratch** to explore the inner workings of these models. The scratch-built versions allow for a deeper understanding of how these algorithms split data, handle bootstrapping, and aggregate results in ensemble learning methods.
+
 Both models were trained on the **Energy Efficiency Dataset (ENB2012)**, a publicly available dataset that includes data on eight building design parameters:
 - **X1:** Relative Compactness
 - **X2:** Surface Area
@@ -112,6 +114,14 @@ Successful
 2. Click the Predict button.
 3. View predicted Heating Load (Y1) and Cooling Load (Y2).
 
+---
+
+## Additional Features
+This project also includes implementations of:
+- A **Decision Tree Regressor** from scratch, demonstrating the algorithm's ability to split data based on thresholds to minimize prediction errors.
+- A **Random Forest Regressor** from scratch, showcasing the ensemble learning process, including bootstrapping and aggregation of multiple decision trees for robust predictions.
+
+These implementations were added for educational purposes to understand the inner workings of these machine learning models.
 
 ---
 
@@ -125,8 +135,6 @@ Successful
 ## Contributing
 Contributions are welcome. Please open an issue first to discuss your proposed changes.
 
-
 ---
 
 Thank you for using the Energy Efficiency Predictor.
-
