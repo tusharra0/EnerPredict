@@ -18,11 +18,17 @@ The Energy Efficiency Predictor is a web application designed to predict heating
 - JavaScript
 
 ### Models and Dataset:
-The prediction models used in this project are based on **Random Forest Regressor**, a robust ensemble learning method that combines multiple decision trees to improve predictive accuracy and control overfitting. Two separate models were trained and optimized:
-- **Heating Load (Y1):** Predicts the energy required for heating a building.
-- **Cooling Load (Y2):** Predicts the energy required for cooling a building.
+The prediction models used in this project are based on **Random Forest Regressor**. This is a method that combines multiple decision trees to make better predictions. By using many trees, the Random Forest can handle more complex patterns in the data and avoid overfitting, which happens when a model works well on training data but poorly on new data. Two separate models were trained:
+- **Heating Load (Y1):** Predicts how much energy is needed to heat a building.
+- **Cooling Load (Y2):** Predicts how much energy is needed to cool a building.
 
-Additionally, **a Decision Tree Regressor and Random Forest Regressor were implemented from scratch** to explore the inner workings of these models. The scratch-built versions allow for a deeper understanding of how these algorithms split data, handle bootstrapping, and aggregate results in ensemble learning methods.
+Additionally, **a Decision Tree Regressor and Random Forest Regressor were built from scratch** to better understand how these models work.
+
+#### How the Decision Tree Regressor Was Built
+The Decision Tree Regressor splits data into smaller groups based on a feature (like Surface Area or Roof Area) and a threshold value. To decide where to split, the algorithm calculates the Mean Squared Error (MSE) for each possible threshold. It chooses the split that reduces MSE the most. The tree continues splitting until it reaches a maximum depth or there isn’t enough data to split further.
+
+#### How the Random Forest Regressor Was Built
+The Random Forest Regressor combines multiple Decision Trees. Each tree is trained on a random sample of the data (called bootstrapping), which helps the model generalize better. During training, each tree uses a random subset of the features to decide the best splits. This randomness ensures that the trees are different from each other. When making predictions, the Random Forest averages the predictions of all the trees to give the final result. This averaging helps reduce errors and improve accuracy.
 
 Both models were trained on the **Energy Efficiency Dataset (ENB2012)**, a publicly available dataset that includes data on eight building design parameters:
 - **X1:** Relative Compactness
@@ -38,7 +44,7 @@ The target variables are:
 - **Y1:** Heating Load
 - **Y2:** Cooling Load
 
-The dataset contains 768 samples, and each sample represents a unique combination of these parameters. Random Forest was selected due to its ability to handle non-linear relationships, reduce overfitting, and deliver reliable results with minimal hyperparameter tuning. The models were evaluated using metrics such as Mean Squared Error (MSE) and R² Score to ensure performance and accuracy.
+The dataset contains 768 samples, and each sample represents a unique combination of these parameters. Random Forest was selected because it can handle complex relationships between features, reduce overfitting, and deliver reliable predictions with minimal fine-tuning. The models were evaluated using metrics like Mean Squared Error (MSE) and R² Score to measure performance.
 
 ---
 
