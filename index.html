@@ -1,55 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Energy Efficiency Predictor</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EnerPredict</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Energy Efficiency Predictor</h1>
-        <form id="predictionForm">
-            <div class="input-group">
-                <label for="X1">X1:</label>
-                <input type="number" id="X1" required>
-            </div>
-            <div class="input-group">
-                <label for="X2">X2:</label>
-                <input type="number" id="X2" required>
-            </div>
-            <div class="input-group">
-                <label for="X3">X3:</label>
-                <input type="number" id="X3" required>
-            </div>
-            <div class="input-group">
-                <label for="X4">X4:</label>
-                <input type="number" id="X4" required>
-            </div>
-            <div class="input-group">
-                <label for="X5">X5:</label>
-                <input type="number" id="X5" required>
-            </div>
-            <div class="input-group">
-                <label for="X6">X6:</label>
-                <input type="number" id="X6" required>
-            </div>
-            <div class="input-group">
-                <label for="X7">X7:</label>
-                <input type="number" id="X7" required>
-            </div>
-            <div class="input-group">
-                <label for="X8">X8:</label>
-                <input type="number" id="X8" required>
-            </div>
-            <button type="button" onclick="predictEnergy()">Predict</button>
-        </form>
-        <div id="results">
-            <h3>Results:</h3>
-            <p id="heatingResult"></p>
-            <p id="coolingResult"></p>
-        </div>
-    </div>
+  <!-- Header Section -->
+  <header>
+    <div class="logo">EnerPredict</div>
+  </header>
+
+  <!-- Landing Page Section -->
+  <section class="landing-page">
+    <h1>Welcome to EnerPredict</h1>
+    <p>
+      Discover the future of energy efficiency. Our tool uses advanced data 
+      models to help you predict heating and cooling loads based on 
+      customizable parameters.
+    </p>
+    <button class="btn">Get Started</button>
+  </section>
+
+  <!-- Form Section -->
+  <section class="form-container" style="display: none;">
+    <h2>Enter Energy Parameters</h2>
+    <p>Fill in the details below to predict heating and cooling loads.</p>
+    <form id="energyForm" class="form">
+      <div class="form-group">
+        <label for="X1">Relative Compactness (X1)</label>
+        <input type="number" id="X1" placeholder="e.g., 0.98" required>
+      </div>
+      <div class="form-group">
+        <label for="X2">Surface Area (X2)</label>
+        <input type="number" id="X2" placeholder="e.g., 637.0" required>
+      </div>
+      <div class="form-group">
+        <label for="X3">Wall Area (X3)</label>
+        <input type="number" id="X3" placeholder="e.g., 318.0" required>
+      </div>
+      <div class="form-group">
+        <label for="X4">Roof Area (X4)</label>
+        <input type="number" id="X4" placeholder="e.g., 122.5" required>
+      </div>
+      <div class="form-group">
+        <label for="X5">Overall Height (X5)</label>
+        <input type="number" id="X5" placeholder="e.g., 7.0" required>
+      </div>
+      <div class="form-group">
+        <label for="X6">Orientation (X6)</label>
+        <input type="number" id="X6" placeholder="e.g., 2" required>
+      </div>
+      <div class="form-group">
+        <label for="X7">Glazing Area (X7)</label>
+        <input type="number" id="X7" placeholder="e.g., 0.1" required>
+      </div>
+      <div class="form-group">
+        <label for="X8">Glazing Area Distribution (X8)</label>
+        <input type="number" id="X8" placeholder="e.g., 5" required>
+      </div>
+      <button type="button" class="btn-submit" onclick="predictEnergy()">Submit</button>
+    </form>
+    <div id="results"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 EnerPredict. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
